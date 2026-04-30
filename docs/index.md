@@ -14,8 +14,8 @@ hero:
       text: Get Involved
       link: /get-involved
     - theme: alt
-      text: Learn More
-      link: https://www.youtube.com/watch?v=BEWxqYfrQek&t
+      text: Resources
+      link: /resources
 
 features:
   - title: Authoritative Data Sources

@@ -10,6 +10,7 @@ export default defineConfig({
       { text: "Home", link: "/" },
       { text: "Get Started", link: "/get-started" },
       { text: "Get Involved", link: "/get-involved" },
+      { text: "Resources", link: "/resources" },
     ],
 
     sidebar: [
@@ -19,40 +20,14 @@ export default defineConfig({
           { text: "Overview", link: "/overview" },
           { text: "Accessing Montandon", link: "/get-started" },
           { text: "Data Examples", link: "/data-examples" },
+          { text: "Resources", link: "/resources" },
         ],
       },
       {
         text: "Get Involved",
         items: [{ text: "Contribute", link: "/get-involved" }],
       },
-    ],
-
-    socialLinks: [
-      {
-        icon: "github",
-        ariaLabel: "Montandon STAC Extension",
-        link: "https://github.com/IFRCGo/monty-stac-extension",
-      },
-      {
-        icon: "python",
-        ariaLabel: "Pystac Monty",
-        link: "https://github.com/IFRCGo/pystac-monty",
-      },
-      {
-        icon: "github",
-        ariaLabel: "Montandon ETL",
-        link: "https://github.com/IFRCGo/montandon-etl",
-      },
-      {
-        icon: "github",
-        ariaLabel: "Monty EOAPI",
-        link: "https://github.com/IFRCGo/monty-eoapi",
-      },
-      {
-        icon: "jupyter",
-        ariaLabel: "Montandon Notebooks",
-        link: "https://ifrcgo.org/montandon-notebooks/",
-      },
+      ,
     ],
   },
 });

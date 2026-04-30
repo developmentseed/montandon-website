@@ -6,4 +6,8 @@ Here are some ways you can get involved:
 
 ## Join the Montandon Working Group
 
+...
+
 ## Contribute to the Pystac-Monty Extension
+
+...
