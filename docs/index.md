@@ -24,8 +24,6 @@ features:
     details: Montandon uses a unified taxonomy to categorize and standardize disaster data across different sources.
   - title: STAC-compatible
     details: Montandon's data is organized in a SpatioTemporal Asset Catalog (STAC) format, making it easy to access and analyze geospatial data.
+  - title: Common Data Model
+    details: Montandon's common data model allows for seamless integration and interoperability across different datasets and platforms.
 ---
-
-## The road ahead
-
-Montandon is building toward a unified taxonomy for humanitarian crisis data — a shared semantic layer that lets any organization in the sector describe events, hazards, and impacts consistently. By correlating records from diverse sources through a common data model, Montandon lays the groundwork for true interoperability: from national societies to UN agencies, from research institutions to field operations, open by design.
