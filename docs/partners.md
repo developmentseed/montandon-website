@@ -21,7 +21,7 @@ The [International Federation of Red Cross and Red Crescent Societies (IFRC)](ht
 [Development Seed](https://developmentseed.org/) is an implementing partner and the technical lead for Montandon. They bring deep expertise in geospatial data infrastructure, STAC, and open-source development to build and maintain the Montandon platform.
 
 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-  <img src="/logos/icons/togglecorp-icon.png" alt="" style="max-height: 28px; width: 28px;" />
+  <img src="/logos/icons/togglecorp-icon.svg" alt="" style="max-height: 28px; width: 28px;" />
   <h3 style="margin: 0;">ToggleCorp</h3>
 </div>
 
