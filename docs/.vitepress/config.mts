@@ -10,6 +10,7 @@ export default defineConfig({
       { text: "Home", link: "/" },
       { text: "Get Started", link: "/get-started" },
       { text: "Get Involved", link: "/get-involved" },
+      { text: "Partners", link: "/partners" },
       { text: "Resources", link: "/resources" },
     ],
 
@@ -27,7 +28,13 @@ export default defineConfig({
         text: "Get Involved",
         items: [{ text: "Contribute", link: "/get-involved" }],
       },
-      ,
+      {
+        text: "Partners & Governance",
+        items: [
+          { text: "Partners", link: "/partners" },
+          { text: "Governance", link: "/governance" },
+        ],
+      },
     ],
   },
 });

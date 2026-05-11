@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: Resources
       link: /resources
+    - theme: alt
+      text: Partners & Governance
+      link: /partners
 
 features:
   - title: Authoritative Data Sources
