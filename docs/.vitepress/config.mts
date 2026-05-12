@@ -9,6 +9,7 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Get Started", link: "/get-started" },
+      { text: "Methodology", link: "/methodology/data-sources" },
       { text: "Get Involved", link: "/get-involved" },
       { text: "Partners", link: "/partners" },
       { text: "Resources", link: "/resources" },
@@ -22,6 +23,12 @@ export default defineConfig({
           { text: "Accessing Montandon", link: "/get-started" },
           { text: "Data Examples", link: "/data-examples" },
           { text: "Resources", link: "/resources" },
+        ],
+      },
+      {
+        text: "Methodology",
+        items: [
+          { text: "Data Sources", link: "/methodology/data-sources" },
         ],
       },
       {
