@@ -1,6 +1,6 @@
 # Data Sources
 
-Montandon integrates data from 11 authoritative sources covering natural hazard events, population impacts, and operational disaster responses. Each source contributes different layers of information to the common data model.
+Montandon integrates data from 13 authoritative sources covering natural hazard events, population impacts, operational disaster responses, and satellite-derived response products. Each source contributes different layers of information to the common data model.
 
 ## Overview
 
@@ -17,6 +17,8 @@ Montandon integrates data from 11 authoritative sources covering natural hazard 
 | [IFRC-DREF](#ifrc-dref) | International Federation of Red Cross and Red Crescent Societies | International Organization | event, impact |
 | [PDC](#pdc) | Pacific Disaster Center | International Organization | event, hazard, impact |
 | [USGS](#usgs) | United States Geological Survey | National Government | event, hazard |
+| [Disaster Charter](#disaster-charter) *(upcoming)* | International Charter Space and Major Disasters | Interagency Consortium | event, hazard, response |
+| [Copernicus EMS](#copernicus-ems) *(upcoming)* | European Commission / Copernicus Programme | Regional Intergovernmental | response |
 
 ---
 
@@ -118,3 +120,23 @@ The United States Geological Survey (USGS) Earthquake Hazards Program provides c
 - **License:** Public Domain
 - **Source URL:** <https://earthquake.usgs.gov>
 - **Contact:** <earthquakeinfo@usgs.gov>
+
+## Disaster Charter
+
+> **Upcoming** — integration in progress.
+
+The International Charter Space and Major Disasters is a voluntary cooperation mechanism among space agencies that mobilises satellite Earth observation assets in response to major disasters. When a charter is activated by an authorised user, member agencies acquire and deliver satellite imagery and derived products (delineation maps, damage assessments) to support emergency response operations. Montandon will ingest Charter Calls and Activations as events, derived satellite acquisitions as hazard records, and Value Added Products as response records.
+
+- **Organization:** International Charter Space and Major Disasters (multi-agency consortium including ESA, JAXA, NASA, and others)
+- **Contributes:** event, hazard, response
+- **Source URL:** <https://disasterscharter.org>
+
+## Copernicus EMS
+
+> **Upcoming** — integration in progress.
+
+The Copernicus Emergency Management Service (CEMS) Rapid Mapping component provides satellite-derived maps and analyses for emergency response within hours to days of a disaster trigger. Products include reference maps, delineation maps (flood extent, burn area), and grading maps (building damage). Unlike most Montandon sources, CEMS records represent operational response actions — the maps produced — rather than the underlying hazard or impact directly.
+
+- **Organization:** European Commission / Copernicus Programme
+- **Contributes:** response
+- **Source URL:** <https://emergency.copernicus.eu/mapping/ems/rapid-mapping-portfolio>
