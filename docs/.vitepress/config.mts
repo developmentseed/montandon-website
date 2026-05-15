@@ -23,13 +23,12 @@ export default defineConfig({
           { text: "Accessing Montandon", link: "/get-started" },
           { text: "Data Examples", link: "/data-examples" },
           { text: "Resources", link: "/resources" },
+          { text: "In the Media", link: "/communications" },
         ],
       },
       {
         text: "Methodology",
-        items: [
-          { text: "Data Sources", link: "/methodology/data-sources" },
-        ],
+        items: [{ text: "Data Sources", link: "/methodology/data-sources" }],
       },
       {
         text: "Get Involved",
