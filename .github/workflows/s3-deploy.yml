@@ -1,0 +1,52 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  # The name of the existing S3 bucket to deploy to.
+  BUCKET_NAME:
+  # The ARN of the IAM role to assume (must have s3:PutObject, s3:DeleteObject, s3:ListBucket).
+  AWS_ROLE_ARN:
+  # The AWS region where the bucket lives.
+  AWS_REGION:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install
+
+      - name: Build
+        run: pnpm docs:build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync \
+            ./docs/.vitepress/dist s3://${{ env.BUCKET_NAME }} \
+            --delete \
+            --quiet
