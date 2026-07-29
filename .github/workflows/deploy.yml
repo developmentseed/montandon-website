@@ -14,7 +14,7 @@ on:
 
   # Preferred trigger once a token with `contents: write` on this repository
   # exists upstream: monty-stac-extension fires this after its docs deploy and
-  # the site refreshes in minutes rather than within a day. Inert until then.
+  # the site refreshes in minutes rather than within a week. Inert until then.
   repository_dispatch:
     types: [sources-updated]
 
