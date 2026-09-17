@@ -114,7 +114,7 @@ ${rows.join("\n")}
 > published as-is, not filtered out here. Tracked in
 > [IFRCGo/montandon-etl#453](https://github.com/IFRCGo/montandon-etl/issues/453).
 
-_Generated ${new Date().toISOString()}._
+_Generated ${dateOnly(new Date().toISOString())}._
 `;
 }
 
