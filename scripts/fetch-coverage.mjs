@@ -83,13 +83,21 @@ async function loadPrevious() {
   }
 }
 
+// Just the date portion — the table doesn't need sub-day precision, and
+// truncating avoids relying on Date parsing for edge cases like year 0001.
+function dateOnly(isoDatetime) {
+  return isoDatetime ? isoDatetime.split("T")[0] : "—";
+}
+
 function renderMarkdown(sources) {
   const rows = Object.entries(sources)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([id, s]) => {
       const name = SOURCE_NAMES[id] ?? id.toUpperCase();
+      // Anchors match the headings in data-sources.md (e.g. "## EM-DAT" -> #em-dat).
+      const link = `[${name}](./data-sources.md#${name.toLowerCase()})`;
       const staleNote = s.stale ? " *(stale — last successful check)*" : "";
-      return `| ${name} | ${s.earliest ?? "—"} | ${s.latest ?? "—"}${staleNote} |`;
+      return `| ${link} | ${dateOnly(s.earliest)} | ${dateOnly(s.latest)}${staleNote} |`;
     });
 
   return `# Data Coverage
