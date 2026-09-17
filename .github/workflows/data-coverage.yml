@@ -1,0 +1,35 @@
+name: Update Data Coverage
+
+on:
+  schedule:
+    - cron: "17 4 * * *" # once daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  MONTANDON_BASE_URL: https://montandon-eoapi.ifrc.org/stac
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Fetch coverage
+        env:
+          MONTANDON_TOKEN: ${{ secrets.MONTANDON_TOKEN }}
+        run: node scripts/fetch-coverage.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/methodology/data-coverage.md docs/methodology/data-coverage.json
+          git diff --staged --quiet || git commit -m "Update data coverage"
+          git push
