@@ -9,9 +9,11 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DOCS_DIR = path.join(__dirname, "..", "docs", "methodology");
-const JSON_PATH = path.join(DOCS_DIR, "data-coverage.json");
-const MD_PATH = path.join(DOCS_DIR, "data-coverage.md");
+const REPO_ROOT = path.join(__dirname, "..");
+// Kept outside docs/ (the VitePress content root) so it isn't built/served as
+// a page and doesn't collide with data-coverage.md on extensionless routing.
+const JSON_PATH = path.join(REPO_ROOT, "scripts", "data-coverage-state.json");
+const MD_PATH = path.join(REPO_ROOT, "docs", "methodology", "data-coverage.md");
 
 const BASE_URL = process.env.MONTANDON_BASE_URL;
 const TOKEN = process.env.MONTANDON_TOKEN;

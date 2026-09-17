@@ -30,6 +30,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/methodology/data-coverage.md docs/methodology/data-coverage.json
+          git add docs/methodology/data-coverage.md scripts/data-coverage-state.json
           git diff --staged --quiet || git commit -m "Update data coverage"
           git push
