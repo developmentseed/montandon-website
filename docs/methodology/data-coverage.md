@@ -17,6 +17,6 @@ production Montandon, refreshed daily.
 | [PDC](./data-sources.md#pdc)                 | 2015-01-29 | 2026-09-20 |
 | [USGS](./data-sources.md#usgs)               | 1990-01-01 | 2026-09-14 |
 
-> **Note on DesInventar:** its date range above includes known bad upstream dates. Tracked in [IFRCGo/montandon-etl#453](https://github.com/IFRCGo/montandon-etl/issues/453).
+> **Note on DesInventar:** the date range above includes known bad upstream dates. Tracked in [IFRCGo/montandon-etl#453](https://github.com/IFRCGo/montandon-etl/issues/453).
 
 _Generated 2026-09-17._
