@@ -45,7 +45,7 @@ async function fetchJson(url, options, retries = 3, backoffMs = 1500) {
     try {
       const res = await fetch(url, {
         ...options,
-        headers: { Authorization: `Bearer ${TOKEN}`, ...options?.headers },
+        headers: { ...options?.headers, Authorization: `Bearer ${TOKEN}` },
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return await res.json();
@@ -139,7 +139,9 @@ async function main() {
         sources[sourceId].latest = latest;
       }
     } catch (err) {
-      console.warn(`Failed to probe ${collectionId} after retries: ${err.message}`);
+      console.warn(
+        `Failed to probe ${collectionId} after retries: ${err instanceof Error ? err.message : String(err)}`,
+      );
     }
   }
 
@@ -156,4 +158,7 @@ async function main() {
   await writeFile(MD_PATH, renderMarkdown(sources));
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
