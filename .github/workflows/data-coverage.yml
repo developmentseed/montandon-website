@@ -12,9 +12,6 @@ concurrency:
 permissions:
   contents: write
 
-env:
-  MONTANDON_BASE_URL: https://montandon-eoapi.ifrc.org/stac
-
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -26,8 +23,6 @@ jobs:
           node-version-file: ".nvmrc"
 
       - name: Fetch coverage
-        env:
-          MONTANDON_TOKEN: ${{ secrets.MONTANDON_TOKEN }}
         run: node scripts/fetch-coverage.mjs
 
       - name: Commit if changed

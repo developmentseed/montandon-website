@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-// Queries production Montandon for the earliest/latest record per data source
-// and regenerates docs/methodology/data-coverage.md + a JSON sidecar.
-//
-// Requires MONTANDON_TOKEN and MONTANDON_BASE_URL in the environment.
+// Queries production Montandon's stats API for per-source item counts and
+// earliest/latest record, and regenerates docs/methodology/data-coverage.md
+// + a JSON sidecar.
 
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
@@ -15,13 +14,8 @@ const REPO_ROOT = path.join(__dirname, "..");
 const JSON_PATH = path.join(REPO_ROOT, "scripts", "data-coverage-state.json");
 const MD_PATH = path.join(REPO_ROOT, "docs", "methodology", "data-coverage.md");
 
-const BASE_URL = process.env.MONTANDON_BASE_URL;
-const TOKEN = process.env.MONTANDON_TOKEN;
-
-if (!BASE_URL || !TOKEN) {
-  console.error("MONTANDON_BASE_URL and MONTANDON_TOKEN must be set.");
-  process.exit(1);
-}
+// Not sensitive, no auth required — hardcoded default like the STAC URL was.
+const STATS_URL = process.env.MONTANDON_STATS_URL ?? "https://montandon-eoapi.ifrc.org/stats";
 
 // Display names for known sources; unmapped ids fall back to an uppercased id.
 const SOURCE_NAMES = {
@@ -38,15 +32,10 @@ const SOURCE_NAMES = {
   usgs: "USGS",
 };
 
-const COLLECTION_SUFFIX = /-(events|hazards|impacts)$/;
-
-async function fetchJson(url, options, retries = 3, backoffMs = 1500) {
+async function fetchJson(url, retries = 3, backoffMs = 1500) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      const res = await fetch(url, {
-        ...options,
-        headers: { ...options?.headers, Authorization: `Bearer ${TOKEN}` },
-      });
+      const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return await res.json();
     } catch (err) {
@@ -56,23 +45,18 @@ async function fetchJson(url, options, retries = 3, backoffMs = 1500) {
   }
 }
 
-async function listCollections() {
-  const data = await fetchJson(`${BASE_URL}/collections?limit=200`);
-  return data.collections.map((c) => c.id);
-}
-
-async function probeDatetime(collectionId, direction) {
-  const body = {
-    collections: [collectionId],
-    limit: 1,
-    sortby: [{ field: "properties.datetime", direction }],
-  };
-  const data = await fetchJson(`${BASE_URL}/search`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  return data.features?.[0]?.properties?.datetime ?? null;
+async function fetchSources() {
+  const rows = await fetchJson(`${STATS_URL}/sources`);
+  const sources = {};
+  for (const row of rows) {
+    sources[row.source] = {
+      earliest: row.earliest,
+      latest: row.latest,
+      totalItems: row.total_items,
+      stale: false,
+    };
+  }
+  return sources;
 }
 
 async function loadPrevious() {
@@ -97,16 +81,17 @@ function renderMarkdown(sources) {
       // Anchors match the headings in data-sources.md (e.g. "## EM-DAT" -> #em-dat).
       const link = `[${name}](./data-sources.md#${name.toLowerCase()})`;
       const staleNote = s.stale ? " *(stale — last successful check)*" : "";
-      return `| ${link} | ${dateOnly(s.earliest)} | ${dateOnly(s.latest)}${staleNote} |`;
+      const items = s.totalItems != null ? s.totalItems.toLocaleString() : "—";
+      return `| ${link} | ${items} | ${dateOnly(s.earliest)} | ${dateOnly(s.latest)}${staleNote} |`;
     });
 
   return `# Data Coverage
 
-Earliest and latest record currently available per data source in
+Item counts and earliest/latest record currently available per data source in
 production Montandon, refreshed daily.
 
-| Source | Earliest | Latest |
-|--------|----------|--------|
+| Source | Items | Earliest | Latest |
+|--------|-------|----------|--------|
 ${rows.join("\n")}
 
 > **Note on DesInventar:** its date range above includes known bad upstream
@@ -120,37 +105,17 @@ _Generated ${dateOnly(new Date().toISOString())}._
 
 async function main() {
   const previous = await loadPrevious();
-  const collectionIds = await listCollections();
 
-  const sources = {};
-  for (const collectionId of collectionIds) {
-    const sourceId = collectionId.replace(COLLECTION_SUFFIX, "");
-    sources[sourceId] ??= { earliest: null, latest: null, stale: false };
-
-    try {
-      const [earliest, latest] = await Promise.all([
-        probeDatetime(collectionId, "asc"),
-        probeDatetime(collectionId, "desc"),
-      ]);
-      if (earliest && (!sources[sourceId].earliest || earliest < sources[sourceId].earliest)) {
-        sources[sourceId].earliest = earliest;
-      }
-      if (latest && (!sources[sourceId].latest || latest > sources[sourceId].latest)) {
-        sources[sourceId].latest = latest;
-      }
-    } catch (err) {
-      console.warn(
-        `Failed to probe ${collectionId} after retries: ${err instanceof Error ? err.message : String(err)}`,
-      );
-    }
-  }
-
-  // Fall back to the previous run's value for any source we got nothing for.
-  for (const [sourceId, prev] of Object.entries(previous.sources ?? {})) {
-    const current = sources[sourceId];
-    if (current && current.earliest === null && current.latest === null) {
-      sources[sourceId] = { ...prev, stale: true };
-    }
+  let sources;
+  try {
+    sources = await fetchSources();
+  } catch (err) {
+    console.warn(
+      `Failed to fetch /stats/sources after retries: ${err instanceof Error ? err.message : String(err)}`,
+    );
+    sources = Object.fromEntries(
+      Object.entries(previous.sources ?? {}).map(([id, prev]) => [id, { ...prev, stale: true }]),
+    );
   }
 
   const output = { generatedAt: new Date().toISOString(), sources };
