@@ -2,6 +2,8 @@
 
 Montandon integrates data from 13 authoritative sources covering natural hazard events, population impacts, operational disaster responses, and satellite-derived response products. Each source contributes different layers of information to the common data model.
 
+For the earliest and latest record currently available per source, refreshed daily, see [Data Coverage](./data-coverage.md).
+
 ## Overview
 
 | Source | Organization | Type | Contributes |

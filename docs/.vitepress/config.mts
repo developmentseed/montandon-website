@@ -29,6 +29,7 @@ export default defineConfig({
         text: "Methodology",
         items: [
           { text: "Data Sources", link: "/methodology/data-sources" },
+          { text: "Data Coverage", link: "/methodology/data-coverage" },
         ],
       },
       {
