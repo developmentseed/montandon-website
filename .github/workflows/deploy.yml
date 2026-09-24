@@ -6,6 +6,18 @@ on:
       - main
   workflow_dispatch:
 
+  # The Data Sources page is generated at build time from the source manifest
+  # published by IFRCGo/monty-stac-extension, so a deploy is a snapshot of that
+  # manifest. Rebuild weekly to pick up upstream changes without a push here.
+  schedule:
+    - cron: "0 0 * * 0"
+
+  # Preferred trigger once a token with `contents: write` on this repository
+  # exists upstream: monty-stac-extension fires this after its docs deploy and
+  # the site refreshes in minutes rather than within a week. Inert until then.
+  repository_dispatch:
+    types: [sources-updated]
+
 permissions:
   contents: read
   pages: write
