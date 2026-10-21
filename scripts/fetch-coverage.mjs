@@ -4,15 +4,12 @@
 // docs/methodology/data-coverage.md + a JSON sidecar.
 
 import { readFile, writeFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
-import path from "node:path";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = path.join(__dirname, "..");
-// Kept outside docs/ (the VitePress content root) so it isn't built/served as
-// a page and doesn't collide with data-coverage.md on extensionless routing.
-const JSON_PATH = path.join(REPO_ROOT, "scripts", "data-coverage-state.json");
-const MD_PATH = path.join(REPO_ROOT, "docs", "methodology", "data-coverage.md");
+// The JSON sidecar is kept outside docs/ (the VitePress content root) so it
+// isn't built/served as a page. It holds the last good API responses and is
+// the fallback when the API is unreachable.
+const JSON_PATH = new URL("./data-coverage-state.json", import.meta.url);
+const MD_PATH = new URL("../docs/methodology/data-coverage.md", import.meta.url);
 
 // Not sensitive, no auth required — hardcoded default like the STAC URL was.
 const STATS_URL = process.env.MONTANDON_STATS_URL ?? "https://montandon-eoapi.ifrc.org/stats";
@@ -39,61 +36,23 @@ const SOURCE_NAMES = {
   usgs: "USGS",
 };
 
-async function fetchJson(url, retries = 3, backoffMs = 1500) {
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch (err) {
-      if (attempt === retries) throw err;
-      await new Promise((r) => setTimeout(r, backoffMs * attempt));
-    }
-  }
+async function fetchJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
 }
 
-async function fetchSnapshot() {
-  const [totals, rows] = await Promise.all([
-    fetchJson(`${STATS_URL}`),
+async function fetchState() {
+  const [stats, sources] = await Promise.all([
+    fetchJson(STATS_URL),
     fetchJson(`${STATS_URL}/sources`),
   ]);
   // Throwing here sends main() to the stale-data fallback instead of
   // overwriting the page with an empty or malformed table.
-  if (!Array.isArray(rows) || rows.length === 0) {
+  if (!Array.isArray(sources) || sources.length === 0) {
     throw new Error("Unexpected /stats/sources response: expected a non-empty array");
   }
-  const sources = {};
-  for (const row of rows) {
-    sources[row.source] = {
-      events: row.events,
-      hazards: row.hazards,
-      impacts: row.impacts,
-      response: row.response,
-      earliest: row.earliest,
-      latest: row.latest,
-    };
-  }
-  return {
-    // The API's own cache timestamp, so "data as of" is honest even if the
-    // API itself has stopped refreshing.
-    generatedAt: totals.generated_at,
-    totals: {
-      collections: totals.total_collections,
-      events: totals.total_events,
-      hazards: totals.total_hazard_items,
-      impacts: totals.total_impact_items,
-      response: totals.total_response_items,
-    },
-    sources,
-  };
-}
-
-async function loadPrevious() {
-  try {
-    return JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  } catch {
-    return null;
-  }
+  return { stats, sources };
 }
 
 // Just the date portion — the table doesn't need sub-day precision, and
@@ -107,19 +66,22 @@ const fmt = (n) => (n != null ? n.toLocaleString("en-US") : "—");
 // VitePress heading anchors: lowercase, spaces -> hyphens.
 const slug = (name) => name.toLowerCase().replace(/\s+/g, "-");
 
-function renderMarkdown({ generatedAt, totals, sources }) {
-  const rows = Object.entries(sources)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([id, s]) => {
-      const name = SOURCE_NAMES[id] ?? id.toUpperCase();
+function renderMarkdown({ stats, sources }) {
+  const rows = sources
+    .toSorted((a, b) => a.source.localeCompare(b.source))
+    .map((s) => {
+      const name = SOURCE_NAMES[s.source] ?? s.source.toUpperCase();
       // Anchors match the headings in data-sources.md (e.g. "## EM-DAT" -> #em-dat).
       const link = `[${name}](./data-sources.md#${slug(name)})`;
       return `| ${link} | ${fmt(s.events)} | ${fmt(s.hazards)} | ${fmt(s.impacts)} | ${fmt(s.response)} | ${dateOnly(s.earliest)} | ${dateOnly(s.latest)} |`;
     });
 
-  const summary = `Montandon currently holds ${fmt(totals.events)} [events](${SPEC_URL}#event), ${fmt(totals.hazards)} [hazard](${SPEC_URL}#hazard) items, ${fmt(totals.impacts)} [impact](${SPEC_URL}#impact) items and ${fmt(totals.response)} [response](${SPEC_URL}#response) items across ${fmt(totals.collections)} collections.`;
+  const summary = `Montandon currently holds ${fmt(stats.total_events)} [events](${SPEC_URL}#event), ${fmt(stats.total_hazard_items)} [hazard](${SPEC_URL}#hazard) items, ${fmt(stats.total_impact_items)} [impact](${SPEC_URL}#impact) items and ${fmt(stats.total_response_items)} [response](${SPEC_URL}#response) items across ${fmt(stats.total_collections)} collections.`;
 
-  const isStale = Date.now() - new Date(generatedAt).getTime() > STALE_AFTER_MS;
+  // generated_at is the API's own cache timestamp, so "data as of" stays honest
+  // even if the API itself has stopped refreshing.
+  // Negated "<=" so a missing or invalid timestamp (NaN) counts as stale.
+  const isStale = !(Date.now() - new Date(stats.generated_at) <= STALE_AFTER_MS);
   const staleNote = isStale
     ? "\n> **Note:** this data is more than a day and a half old; a recent refresh may have failed.\n"
     : "";
@@ -138,24 +100,21 @@ ${rows.join("\n")}
 > in the upstream data source. This issue is tracked in
 > [IFRCGo/montandon-etl#453](https://github.com/IFRCGo/montandon-etl/issues/453).
 ${staleNote}
-_Data as of ${dateOnly(generatedAt)}._
+_Data as of ${dateOnly(stats.generated_at)}._
 `;
 }
 
 async function main() {
-  let snapshot;
+  let state;
   try {
-    snapshot = await fetchSnapshot();
+    state = await fetchState();
   } catch (err) {
-    console.warn(
-      `Failed to fetch stats after retries: ${err instanceof Error ? err.message : String(err)}`,
-    );
-    snapshot = await loadPrevious();
-    if (!snapshot) throw new Error("No previous coverage state to fall back to");
+    console.warn(`Failed to fetch stats, using last saved data: ${err.message}`);
+    state = JSON.parse(await readFile(JSON_PATH, "utf-8"));
   }
 
-  await writeFile(JSON_PATH, JSON.stringify(snapshot, null, 2) + "\n");
-  await writeFile(MD_PATH, renderMarkdown(snapshot));
+  await writeFile(JSON_PATH, JSON.stringify(state, null, 2) + "\n");
+  await writeFile(MD_PATH, renderMarkdown(state));
 }
 
 main().catch((err) => {
