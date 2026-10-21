@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "17 4 * * *" # daily, refreshes the data coverage page
   workflow_dispatch:
 
 permissions:
@@ -18,6 +20,11 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # contents: write lets the job commit the refreshed coverage files below.
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -35,8 +42,23 @@ jobs:
       - name: Install
         run: pnpm install
 
+      - name: Fetch data coverage
+        run: node scripts/fetch-coverage.mjs
+
       - name: Build
         run: pnpm docs:build
+
+      # Keeps the repo (and the script's stale-data fallback) current. A push
+      # made with GITHUB_TOKEN doesn't re-trigger this workflow. Failure here
+      # shouldn't block the deploy.
+      - name: Commit coverage if changed
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/methodology/data-coverage.md scripts/data-coverage-state.json
+          git diff --staged --quiet || git commit -m "Update data coverage"
+          git push
 
       - uses: actions/upload-pages-artifact@v3
         with:
