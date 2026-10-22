@@ -1,15 +1,15 @@
 # Data Coverage
 
-Montandon currently holds 5,468,702 [events](https://github.com/IFRCGo/monty-stac-extension#event), 5,536,934 [hazard](https://github.com/IFRCGo/monty-stac-extension#hazard) items, 11,863,941 [impact](https://github.com/IFRCGo/monty-stac-extension#impact) items and 5,530 [response](https://github.com/IFRCGo/monty-stac-extension#response) items across 31 collections.
+Montandon currently holds 5,468,773 [events](https://github.com/IFRCGo/monty-stac-extension#event), 5,537,006 [hazard](https://github.com/IFRCGo/monty-stac-extension#hazard) items, 11,863,967 [impact](https://github.com/IFRCGo/monty-stac-extension#impact) items and 5,547 [response](https://github.com/IFRCGo/monty-stac-extension#response) items across 31 collections.
 
 Below are the items of each type per data source, with the earliest and latest record available.
 
 | Source | Events | Hazards | Impacts | Response | Earliest | Latest |
 |--------|--------|---------|---------|----------|----------|--------|
-| [Copernicus EMS](./data-sources.md#copernicus-ems) | 262 | 1,257 | 2,476 | 5,530 | 2003-05-14 | 2026-10-17 |
+| [Copernicus EMS](./data-sources.md#copernicus-ems) | 263 | 1,259 | 2,489 | 5,547 | 2003-05-14 | 2026-10-21 |
 | [DesInventar](./data-sources.md#desinventar) | 564,591 | 0 | 586,683 | 0 | 0001-01-01 | 2310-09-23 |
 | [EM-DAT](./data-sources.md#em-dat) | 22,426 | 22,426 | 58,684 | 0 | 1950-01-01 | 2026-09-28 |
-| [GDACS](./data-sources.md#gdacs) | 308,870 | 308,870 | 486,520 | 0 | 1900-01-01 | 2026-10-23 |
+| [GDACS](./data-sources.md#gdacs) | 308,940 | 308,940 | 486,533 | 0 | 1900-01-01 | 2026-10-23 |
 | [GFD](./data-sources.md#gfd) | 913 | 913 | 1,826 | 0 | 2000-02-17 | 2018-12-05 |
 | [GLIDE](./data-sources.md#glide) | 7,390 | 7,390 | 0 | 0 | 1956-07-16 | 2026-10-14 |
 | [IBTrACS](./data-sources.md#ibtracs) | 13,532 | 728,067 | 0 | 0 | 1842-10-25 | 2026-10-14 |
@@ -23,4 +23,4 @@ Below are the items of each type per data source, with the earliest and latest r
 > in the upstream data source. This issue is tracked in
 > [IFRCGo/montandon-etl#453](https://github.com/IFRCGo/montandon-etl/issues/453).
 
-_Data as of 2026-10-21._
+_Data as of 2026-10-22._

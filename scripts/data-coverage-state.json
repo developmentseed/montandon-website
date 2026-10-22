@@ -1,22 +1,22 @@
 {
   "stats": {
     "total_collections": 31,
-    "total_events": 5468702,
-    "total_hazard_items": 5536934,
-    "total_impact_items": 11863941,
-    "total_response_items": 5530,
-    "generated_at": "2026-10-21T02:04:47.706041+00:00"
+    "total_events": 5468773,
+    "total_hazard_items": 5537006,
+    "total_impact_items": 11863967,
+    "total_response_items": 5547,
+    "generated_at": "2026-10-22T02:04:43.770297+00:00"
   },
   "sources": [
     {
       "source": "cems",
-      "events": 262,
-      "hazards": 1257,
-      "impacts": 2476,
-      "response": 5530,
-      "total_items": 9525,
+      "events": 263,
+      "hazards": 1259,
+      "impacts": 2489,
+      "response": 5547,
+      "total_items": 9558,
       "earliest": "2003-05-14T06:00:00+00:00",
-      "latest": "2026-10-17T11:06:00+00:00"
+      "latest": "2026-10-21T03:18:38.708530+00:00"
     },
     {
       "source": "desinventar",
@@ -40,11 +40,11 @@
     },
     {
       "source": "gdacs",
-      "events": 308870,
-      "hazards": 308870,
-      "impacts": 486520,
+      "events": 308940,
+      "hazards": 308940,
+      "impacts": 486533,
       "response": 0,
-      "total_items": 1104260,
+      "total_items": 1104413,
       "earliest": "1900-01-01T00:00:00+00:00",
       "latest": "2026-10-23T06:00:00+00:00"
     },
