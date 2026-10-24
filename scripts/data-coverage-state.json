@@ -1,11 +1,11 @@
 {
   "stats": {
     "total_collections": 31,
-    "total_events": 5469115,
-    "total_hazard_items": 5537348,
-    "total_impact_items": 11866247,
+    "total_events": 5469557,
+    "total_hazard_items": 5537790,
+    "total_impact_items": 11869718,
     "total_response_items": 5547,
-    "generated_at": "2026-10-23T02:04:50.265009+00:00"
+    "generated_at": "2026-10-24T02:04:55.174254+00:00"
   },
   "sources": [
     {
@@ -40,11 +40,11 @@
     },
     {
       "source": "gdacs",
-      "events": 308949,
-      "hazards": 308949,
-      "impacts": 486533,
+      "events": 309201,
+      "hazards": 309201,
+      "impacts": 486603,
       "response": 0,
-      "total_items": 1104431,
+      "total_items": 1105005,
       "earliest": "1900-01-01T00:00:00+00:00",
       "latest": "2026-10-23T06:00:00+00:00"
     },
@@ -110,21 +110,21 @@
     },
     {
       "source": "pdc",
-      "events": 459793,
-      "hazards": 459796,
-      "impacts": 10473419,
+      "events": 459910,
+      "hazards": 459913,
+      "impacts": 10476820,
       "response": 0,
-      "total_items": 11393008,
+      "total_items": 11396643,
       "earliest": "2015-01-29T01:39:00+00:00",
-      "latest": "2026-10-20T23:57:29+00:00"
+      "latest": "2026-10-22T18:00:00+00:00"
     },
     {
       "source": "usgs",
-      "events": 4008549,
-      "hazards": 4008548,
+      "events": 4008622,
+      "hazards": 4008621,
       "impacts": 18817,
       "response": 0,
-      "total_items": 8035914,
+      "total_items": 8036060,
       "earliest": "1990-01-01T00:22:33.990000+00:00",
       "latest": "2026-10-18T13:46:47.190000+00:00"
     }
