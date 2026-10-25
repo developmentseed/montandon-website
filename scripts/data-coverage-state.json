@@ -1,11 +1,11 @@
 {
   "stats": {
     "total_collections": 31,
-    "total_events": 5469557,
-    "total_hazard_items": 5537790,
-    "total_impact_items": 11869718,
+    "total_events": 5469560,
+    "total_hazard_items": 5537793,
+    "total_impact_items": 11869737,
     "total_response_items": 5547,
-    "generated_at": "2026-10-24T02:04:55.174254+00:00"
+    "generated_at": "2026-10-25T02:04:46.122290+00:00"
   },
   "sources": [
     {
@@ -40,11 +40,11 @@
     },
     {
       "source": "gdacs",
-      "events": 309201,
-      "hazards": 309201,
+      "events": 309203,
+      "hazards": 309203,
       "impacts": 486603,
       "response": 0,
-      "total_items": 1105005,
+      "total_items": 1105009,
       "earliest": "1900-01-01T00:00:00+00:00",
       "latest": "2026-10-23T06:00:00+00:00"
     },
@@ -110,11 +110,11 @@
     },
     {
       "source": "pdc",
-      "events": 459910,
-      "hazards": 459913,
-      "impacts": 10476820,
+      "events": 459911,
+      "hazards": 459914,
+      "impacts": 10476839,
       "response": 0,
-      "total_items": 11396643,
+      "total_items": 11396664,
       "earliest": "2015-01-29T01:39:00+00:00",
       "latest": "2026-10-22T18:00:00+00:00"
     },
