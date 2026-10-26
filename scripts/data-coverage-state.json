@@ -1,11 +1,11 @@
 {
   "stats": {
     "total_collections": 31,
-    "total_events": 5469560,
-    "total_hazard_items": 5537793,
-    "total_impact_items": 11869737,
+    "total_events": 5470805,
+    "total_hazard_items": 5538976,
+    "total_impact_items": 11890570,
     "total_response_items": 5547,
-    "generated_at": "2026-10-25T02:04:46.122290+00:00"
+    "generated_at": "2026-10-26T02:04:56.839690+00:00"
   },
   "sources": [
     {
@@ -40,11 +40,11 @@
     },
     {
       "source": "gdacs",
-      "events": 309203,
-      "hazards": 309203,
+      "events": 309335,
+      "hazards": 309335,
       "impacts": 486603,
       "response": 0,
-      "total_items": 1105009,
+      "total_items": 1105273,
       "earliest": "1900-01-01T00:00:00+00:00",
       "latest": "2026-10-23T06:00:00+00:00"
     },
@@ -90,13 +90,13 @@
     },
     {
       "source": "idmc-idu",
-      "events": 37678,
+      "events": 37740,
       "hazards": 0,
-      "impacts": 114937,
+      "impacts": 115025,
       "response": 0,
-      "total_items": 152615,
+      "total_items": 152765,
       "earliest": "2008-01-01T00:00:00+00:00",
-      "latest": "2026-10-05T00:00:00+00:00"
+      "latest": "2026-10-19T00:00:00+00:00"
     },
     {
       "source": "ifrcevent",
@@ -110,23 +110,23 @@
     },
     {
       "source": "pdc",
-      "events": 459911,
-      "hazards": 459914,
-      "impacts": 10476839,
+      "events": 460768,
+      "hazards": 460771,
+      "impacts": 10497568,
       "response": 0,
-      "total_items": 11396664,
+      "total_items": 11419107,
       "earliest": "2015-01-29T01:39:00+00:00",
-      "latest": "2026-10-22T18:00:00+00:00"
+      "latest": "2026-10-27T06:00:00+00:00"
     },
     {
       "source": "usgs",
-      "events": 4008622,
-      "hazards": 4008621,
-      "impacts": 18817,
+      "events": 4008816,
+      "hazards": 4008815,
+      "impacts": 18833,
       "response": 0,
-      "total_items": 8036060,
+      "total_items": 8036464,
       "earliest": "1990-01-01T00:22:33.990000+00:00",
-      "latest": "2026-10-18T13:46:47.190000+00:00"
+      "latest": "2026-10-24T23:59:36.599000+00:00"
     }
   ]
 }
