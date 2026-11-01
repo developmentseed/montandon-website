@@ -1,11 +1,11 @@
 {
   "stats": {
     "total_collections": 34,
-    "total_events": 5493322,
-    "total_hazard_items": 5562135,
-    "total_impact_items": 12211420,
-    "total_response_items": 26478,
-    "generated_at": "2026-10-31T02:04:34.655635+00:00"
+    "total_events": 5494978,
+    "total_hazard_items": 5563794,
+    "total_impact_items": 12237407,
+    "total_response_items": 26503,
+    "generated_at": "2026-11-01T02:04:39.944361+00:00"
   },
   "sources": [
     {
@@ -20,13 +20,13 @@
     },
     {
       "source": "charter",
-      "events": 63,
-      "hazards": 420,
+      "events": 64,
+      "hazards": 424,
       "impacts": 0,
-      "response": 20927,
-      "total_items": 21410,
+      "response": 20952,
+      "total_items": 21440,
       "earliest": "1984-03-01T00:00:00+00:00",
-      "latest": "2026-10-30T12:53:49+00:00"
+      "latest": "2026-10-31T18:29:29.076209+00:00"
     },
     {
       "source": "desinventar",
@@ -50,13 +50,13 @@
     },
     {
       "source": "gdacs",
-      "events": 311276,
-      "hazards": 311276,
-      "impacts": 488734,
+      "events": 311526,
+      "hazards": 311526,
+      "impacts": 488881,
       "response": 0,
-      "total_items": 1111286,
+      "total_items": 1111933,
       "earliest": "1900-01-01T00:00:00+00:00",
-      "latest": "2026-11-04T06:00:00+00:00"
+      "latest": "2026-11-05T06:00:00+00:00"
     },
     {
       "source": "gfd",
@@ -120,23 +120,23 @@
     },
     {
       "source": "pdc",
-      "events": 473692,
-      "hazards": 473695,
-      "impacts": 10815856,
+      "events": 474853,
+      "hazards": 474856,
+      "impacts": 10841696,
       "response": 0,
-      "total_items": 11763243,
+      "total_items": 11791405,
       "earliest": "2015-01-29T01:39:00+00:00",
-      "latest": "2026-11-01T03:00:00+00:00"
+      "latest": "2026-11-03T03:00:00+00:00"
     },
     {
       "source": "usgs",
-      "events": 4016262,
-      "hazards": 4016261,
+      "events": 4016506,
+      "hazards": 4016505,
       "impacts": 18964,
       "response": 0,
-      "total_items": 8051487,
+      "total_items": 8051975,
       "earliest": "1990-01-01T00:22:33.990000+00:00",
-      "latest": "2026-10-29T23:44:05+00:00"
+      "latest": "2026-10-30T23:54:59.940000+00:00"
     }
   ]
 }
