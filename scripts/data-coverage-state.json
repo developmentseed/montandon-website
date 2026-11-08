@@ -1,11 +1,11 @@
 {
   "stats": {
     "total_collections": 34,
-    "total_events": 5504516,
-    "total_hazard_items": 5572920,
-    "total_impact_items": 12382190,
-    "total_response_items": 26737,
-    "generated_at": "2026-11-07T02:04:31.808251+00:00"
+    "total_events": 5506069,
+    "total_hazard_items": 5574473,
+    "total_impact_items": 12412264,
+    "total_response_items": 26743,
+    "generated_at": "2026-11-08T02:04:36.543669+00:00"
   },
   "sources": [
     {
@@ -23,10 +23,10 @@
       "events": 65,
       "hazards": 430,
       "impacts": 0,
-      "response": 21186,
-      "total_items": 21681,
+      "response": 21192,
+      "total_items": 21687,
       "earliest": "1984-03-01T00:00:00+00:00",
-      "latest": "2026-11-06T12:51:04.176000+00:00"
+      "latest": "2026-11-07T04:52:30+00:00"
     },
     {
       "source": "desinventar",
@@ -50,13 +50,13 @@
     },
     {
       "source": "gdacs",
-      "events": 313550,
-      "hazards": 313550,
-      "impacts": 503508,
+      "events": 313756,
+      "hazards": 313756,
+      "impacts": 504698,
       "response": 0,
-      "total_items": 1130608,
+      "total_items": 1132210,
       "earliest": "1900-01-01T00:00:00+00:00",
-      "latest": "2026-11-11T06:00:00+00:00"
+      "latest": "2026-11-12T06:00:00+00:00"
     },
     {
       "source": "gfd",
@@ -120,23 +120,23 @@
     },
     {
       "source": "pdc",
-      "events": 480396,
-      "hazards": 480399,
-      "impacts": 10971124,
+      "events": 481529,
+      "hazards": 481532,
+      "impacts": 11000004,
       "response": 0,
-      "total_items": 11931919,
+      "total_items": 11963065,
       "earliest": "2015-01-29T01:39:00+00:00",
-      "latest": "2026-11-08T03:01:00+00:00"
+      "latest": "2026-11-10T03:00:00+00:00"
     },
     {
       "source": "usgs",
-      "events": 4017959,
-      "hazards": 4017958,
-      "impacts": 18991,
+      "events": 4018173,
+      "hazards": 4018172,
+      "impacts": 18995,
       "response": 0,
-      "total_items": 8054908,
+      "total_items": 8055340,
       "earliest": "1990-01-01T00:22:33.990000+00:00",
-      "latest": "2026-11-05T23:58:38.150000+00:00"
+      "latest": "2026-11-06T23:39:06.863000+00:00"
     }
   ]
 }
