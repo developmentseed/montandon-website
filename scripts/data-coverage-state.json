@@ -1,11 +1,11 @@
 {
   "stats": {
     "total_collections": 34,
-    "total_events": 5514574,
-    "total_hazard_items": 5583064,
-    "total_impact_items": 12565244,
+    "total_events": 5516273,
+    "total_hazard_items": 5584762,
+    "total_impact_items": 12589638,
     "total_response_items": 26873,
-    "generated_at": "2026-11-14T02:05:06.772541+00:00"
+    "generated_at": "2026-11-15T02:04:42.119201+00:00"
   },
   "sources": [
     {
@@ -50,11 +50,11 @@
     },
     {
       "source": "gdacs",
-      "events": 314837,
-      "hazards": 314837,
-      "impacts": 506042,
+      "events": 315206,
+      "hazards": 315206,
+      "impacts": 506075,
       "response": 0,
-      "total_items": 1135716,
+      "total_items": 1136487,
       "earliest": "1900-01-01T00:00:00+00:00",
       "latest": "2026-11-15T12:00:00+00:00"
     },
@@ -100,11 +100,11 @@
     },
     {
       "source": "idmc-idu",
-      "events": 38412,
+      "events": 38413,
       "hazards": 0,
-      "impacts": 116025,
+      "impacts": 116026,
       "response": 0,
-      "total_items": 154437,
+      "total_items": 154439,
       "earliest": "2008-01-01T00:00:00+00:00",
       "latest": "2026-11-12T00:00:00+00:00"
     },
@@ -120,23 +120,23 @@
     },
     {
       "source": "pdc",
-      "events": 487552,
-      "hazards": 487555,
-      "impacts": 11151472,
+      "events": 488603,
+      "hazards": 488606,
+      "impacts": 11175830,
       "response": 0,
-      "total_items": 12126579,
+      "total_items": 12153039,
       "earliest": "2015-01-29T01:39:00+00:00",
-      "latest": "2026-11-15T03:00:00+00:00"
+      "latest": "2026-11-16T06:00:00+00:00"
     },
     {
       "source": "usgs",
-      "events": 4019504,
-      "hazards": 4019503,
-      "impacts": 19023,
+      "events": 4019782,
+      "hazards": 4019781,
+      "impacts": 19025,
       "response": 0,
-      "total_items": 8058030,
+      "total_items": 8058588,
       "earliest": "1990-01-01T00:22:33.990000+00:00",
-      "latest": "2026-11-12T23:59:48.260000+00:00"
+      "latest": "2026-11-13T23:55:18.250000+00:00"
     }
   ]
 }
