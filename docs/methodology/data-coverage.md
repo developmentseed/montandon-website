@@ -1,27 +1,27 @@
 # Data Coverage
 
-Montandon currently holds 5,519,268 [events](https://github.com/IFRCGo/monty-stac-extension#event), 5,587,749 [hazard](https://github.com/IFRCGo/monty-stac-extension#hazard) items, 12,639,980 [impact](https://github.com/IFRCGo/monty-stac-extension#impact) items and 26,916 [response](https://github.com/IFRCGo/monty-stac-extension#response) items across 34 collections.
+Montandon currently holds 5,520,653 [events](https://github.com/IFRCGo/monty-stac-extension#event), 5,589,136 [hazard](https://github.com/IFRCGo/monty-stac-extension#hazard) items, 12,666,473 [impact](https://github.com/IFRCGo/monty-stac-extension#impact) items and 26,921 [response](https://github.com/IFRCGo/monty-stac-extension#response) items across 34 collections.
 
 Below are the items of each type per data source, with the earliest and latest record available.
 
 | Source | Events | Hazards | Impacts | Response | Earliest | Latest |
 |--------|--------|---------|---------|----------|----------|--------|
-| [Copernicus EMS](./data-sources.md#copernicus-ems) | 263 | 1,259 | 2,500 | 5,551 | 2003-05-14 | 2026-10-21 |
+| [Copernicus EMS](./data-sources.md#copernicus-ems) | 264 | 1,260 | 2,500 | 5,556 | 2003-05-14 | 2026-11-17 |
 | [CHARTER](./data-sources.md#charter) | 66 | 431 | 0 | 21,365 | 1984-03-01 | 2026-11-16 |
 | [DesInventar](./data-sources.md#desinventar) | 564,591 | 0 | 586,683 | 0 | 0001-01-01 | 2310-09-23 |
 | [EM-DAT](./data-sources.md#em-dat) | 22,471 | 22,471 | 58,814 | 0 | 1950-01-01 | 2026-10-31 |
-| [GDACS](./data-sources.md#gdacs) | 315,721 | 315,721 | 506,570 | 0 | 1900-01-01 | 2026-11-21 |
+| [GDACS](./data-sources.md#gdacs) | 315,937 | 315,937 | 507,424 | 0 | 1900-01-01 | 2026-11-22 |
 | [GFD](./data-sources.md#gfd) | 913 | 913 | 1,826 | 0 | 2000-02-17 | 2018-12-05 |
 | [GLIDE](./data-sources.md#glide) | 7,392 | 7,392 | 0 | 0 | 1956-07-16 | 2026-11-08 |
-| [IBTrACS](./data-sources.md#ibtracs) | 13,543 | 728,704 | 0 | 0 | 1842-10-25 | 2026-11-07 |
+| [IBTrACS](./data-sources.md#ibtracs) | 13,543 | 728,708 | 0 | 0 | 1842-10-25 | 2026-11-07 |
 | [IDMC](./data-sources.md#idmc) | 42,393 | 0 | 120,047 | 0 | 1979-04-01 | 2025-12-31 |
-| [IDU](./data-sources.md#idu) | 38,421 | 0 | 116,048 | 0 | 2008-01-01 | 2026-11-14 |
+| [IDU](./data-sources.md#idu) | 38,423 | 0 | 116,050 | 0 | 2008-01-01 | 2026-11-14 |
 | [IFRC-DREF](./data-sources.md#ifrc-dref) | 2,638 | 0 | 2,812 | 0 | 1919-01-01 | 2026-09-14 |
-| [PDC](./data-sources.md#pdc) | 490,666 | 490,669 | 11,225,648 | 0 | 2015-01-29 | 2026-11-18 |
-| [USGS](./data-sources.md#usgs) | 4,020,190 | 4,020,189 | 19,032 | 0 | 1990-01-01 | 2026-11-15 |
+| [PDC](./data-sources.md#pdc) | 491,616 | 491,619 | 11,251,279 | 0 | 2015-01-29 | 2026-11-19 |
+| [USGS](./data-sources.md#usgs) | 4,020,406 | 4,020,405 | 19,038 | 0 | 1990-01-01 | 2026-11-16 |
 
 > **Note on DesInventar:** the date range above includes known incorrect dates
 > in the upstream data source. This issue is tracked in
 > [IFRCGo/montandon-etl#453](https://github.com/IFRCGo/montandon-etl/issues/453).
 
-_Data as of 2026-11-17._
+_Data as of 2026-11-18._
