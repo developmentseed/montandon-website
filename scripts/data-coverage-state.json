@@ -1,11 +1,11 @@
 {
   "stats": {
     "total_collections": 34,
-    "total_events": 5532487,
-    "total_hazard_items": 5601061,
-    "total_impact_items": 12882099,
+    "total_events": 5533910,
+    "total_hazard_items": 5602483,
+    "total_impact_items": 12909952,
     "total_response_items": 27012,
-    "generated_at": "2026-11-26T02:04:40.465072+00:00"
+    "generated_at": "2026-11-27T02:04:41.152957+00:00"
   },
   "sources": [
     {
@@ -26,7 +26,7 @@
       "response": 21448,
       "total_items": 21979,
       "earliest": "1984-03-01T00:00:00+00:00",
-      "latest": "2026-11-20T14:56:18.327676+00:00"
+      "latest": "2026-11-26T14:02:48.709432+00:00"
     },
     {
       "source": "desinventar",
@@ -50,11 +50,11 @@
     },
     {
       "source": "gdacs",
-      "events": 317436,
-      "hazards": 317436,
-      "impacts": 513732,
+      "events": 317606,
+      "hazards": 317606,
+      "impacts": 514591,
       "response": 0,
-      "total_items": 1148604,
+      "total_items": 1149803,
       "earliest": "1900-01-01T00:00:00+00:00",
       "latest": "2026-11-27T06:00:00+00:00"
     },
@@ -81,10 +81,10 @@
     {
       "source": "ibtracs",
       "events": 13545,
-      "hazards": 728790,
+      "hazards": 728798,
       "impacts": 0,
       "response": 0,
-      "total_items": 742335,
+      "total_items": 742343,
       "earliest": "1842-10-25T03:00:00+00:00",
       "latest": "2026-11-16T18:00:00+00:00"
     },
@@ -100,43 +100,43 @@
     },
     {
       "source": "idmc-idu",
-      "events": 38447,
+      "events": 38455,
       "hazards": 0,
-      "impacts": 116115,
+      "impacts": 116125,
       "response": 0,
-      "total_items": 154562,
+      "total_items": 154580,
       "earliest": "2008-01-01T00:00:00+00:00",
-      "latest": "2026-11-21T00:00:00+00:00"
+      "latest": "2026-11-22T00:00:00+00:00"
     },
     {
       "source": "ifrcevent",
-      "events": 2638,
+      "events": 2639,
       "hazards": 0,
       "impacts": 2812,
       "response": 0,
-      "total_items": 5450,
+      "total_items": 5451,
       "earliest": "1919-01-01T00:00:00+00:00",
-      "latest": "2026-09-14T00:00:00+00:00"
+      "latest": "2026-11-25T11:49:58+00:00"
     },
     {
       "source": "pdc",
-      "events": 499890,
-      "hazards": 499893,
-      "impacts": 11460450,
+      "events": 500901,
+      "hazards": 500904,
+      "impacts": 11487430,
       "response": 0,
-      "total_items": 12460233,
+      "total_items": 12489235,
       "earliest": "2015-01-29T01:39:00+00:00",
-      "latest": "2026-11-26T19:00:00+00:00"
+      "latest": "2026-11-27T15:00:00+00:00"
     },
     {
       "source": "usgs",
-      "events": 4022395,
-      "hazards": 4022394,
-      "impacts": 19079,
+      "events": 4022628,
+      "hazards": 4022627,
+      "impacts": 19083,
       "response": 0,
-      "total_items": 8063868,
+      "total_items": 8064338,
       "earliest": "1990-01-01T00:22:33.990000+00:00",
-      "latest": "2026-11-24T23:52:18.150000+00:00"
+      "latest": "2026-11-25T23:58:44.730000+00:00"
     }
   ]
 }
